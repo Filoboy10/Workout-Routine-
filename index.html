@@ -1,372 +1,319 @@
-[slides]
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrenamiento Pro - Barras & Bandas</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        /* 1. SETUP DE DIAPOSITIVA PROFESIONAL */
-        * { box-sizing: border-box; }
-        
-        body {
-            background-color: #1a1a1a; /* Gris muy oscuro para el fondo de página */
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            margin: 0;
-            padding: 40px 0;
-            place-items: center;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strength Pro - Workout App</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,900&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        .slide-container {
-            width: 1280px;
-            height: 720px;
-            background-color: #000000; /* Fondo negro puro de la diapositiva */
-            display: flex;
-            flex-direction: column;
-            padding: 60px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
-            font-family: 'Inter', sans-serif;
-        }
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+charcoal: {
+950: '#0B0B0C',
+900: '#121214',
+800: '#1A1A1E',
+700: '#26262B',
+},
+volt: '#CFFF5E', /* Verde Neón */
+},
+fontFamily: {
+barlow: ['"Barlow Condensed"', 'sans-serif'],
+inter: ['Inter', 'sans-serif'],
+}
+}
+}
+}
+</script>
+<style>
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0B0B0C; }
+::-webkit-scrollbar-thumb { background: #26262B; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #CFFF5E; }
 
-        /* Diseño de Fondo (Glow sutil) */
-        .slide-container::before {
-            content: '';
-            position: absolute;
-            top: -10%; right: -10%;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(204, 255, 0, 0.05) 0%, transparent 70%);
-            z-index: 0;
-        }
+.text-glow { text-shadow: 0 0 30px rgba(207, 255, 94, 0.3); }
+.box-glow:hover { box-shadow: 0 0 20px rgba(207, 255, 94, 0.1); }
 
-        .slide-container::after {
-            content: '';
-            position: absolute;
-            bottom: 40px; right: 60px;
-            width: 150px; height: 3px;
-            background: #ccff00;
-            z-index: 1;
-        }
-
-        .slide-container > * { position: relative; z-index: 2; }
-
-        /* 2. TIPOGRAFÍA EXACTA */
-        h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; margin: 0; color: #ffffff; }
-
-        .slide-title {
-            font-size: 48px;
-            color: #ccff00;
-            margin-bottom: 40px;
-            text-align: left;
-            width: 100%;
-            font-weight: 700;
-        }
-
-        p, li { font-size: 20px; line-height: 1.5; color: #ffffff; margin-bottom: 10px; }
-        .subtitle { font-size: 28px; color: #a1a1aa; margin-top: 20px; }
-
-        /* 3. LAYOUTS DE CONSULTORÍA */
-        .content-area {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .title-layout { text-align: center; justify-content: center; height: 100%; align-items: center; }
-        .title-layout h1 { font-size: 110px; color: #ccff00; line-height: 1; }
-
-        .section-title-layout { text-align: center; justify-content: center; align-items: center; height: 100%; }
-        .section-title-layout h2 { font-size: 80px; border-bottom: 5px solid #ccff00; padding-bottom: 20px; }
-
-        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; width: 100%; }
-
-        .image-wrapper { 
-            border-radius: 12px; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            height: 400px; 
-            overflow: hidden; 
-            width: 100%; 
-        }
-        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-
-        .tile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; }
-        .tile { 
-            background: #111111; 
-            border-radius: 8px; 
-            border-top: 4px solid #ccff00; 
-            padding: 30px; 
-            text-align: left; 
-        }
-        .tile h3 { font-size: 20px; color: #ccff00; margin-bottom: 15px; }
-        .tile p { font-size: 16px; color: #a1a1aa; margin-bottom: 5px; }
-
-        .bullet-list { list-style: none; padding: 0; }
-        .bullet-list li { position: relative; padding-left: 40px; margin-bottom: 15px; }
-        .bullet-list li i { position: absolute; left: 0; color: #ccff00; font-size: 24px; top: 3px; }
-
-        /* Bleed Image Layout */
-        .slide-container.bleed-image-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; align-items: start; }
-        .bleed-text-side { padding: 60px; display: flex; flex-direction: column; justify-content: center; height: 100%; }
-        .bleed-image-side { height: 720px; width: 100%; object-fit: cover; }
-
-    </style>
+.hidden-block { display: none !important; }
+</style>
 </head>
-<body>
+<body class="bg-charcoal-950 text-white font-inter antialiased min-h-screen flex flex-col selection:bg-volt selection:text-black">
 
-<div class="slide-container" id="slide1">
-    <div class="content-area title-layout">
-        <h1>ENTRENAMIENTO</h1>
-        <p class="subtitle">BARRAS & BANDAS DE RESISTENCIA<br>LUNES • MIÉRCOLES • VIERNES</p>
-    </div>
+<!-- HEADER -->
+<header class="border-b border-charcoal-700 bg-charcoal-950/80 backdrop-blur sticky top-0 z-50">
+<div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2 cursor-pointer" onclick="changeBlock('home')">
+<span class="font-barlow text-3xl font-black italic tracking-wider text-volt">STRENGTH</span>
+<span class="text-xs uppercase bg-white text-black px-2 py-0.5 rounded font-inter font-bold tracking-widest">PRO</span>
+</div>
+</div>
+</header>
+
+<main class="flex-grow flex flex-col w-full max-w-6xl mx-auto px-6 py-12 relative">
+
+<!-- ==========================================
+BLOQUE 1: HOME PAGE (Dinámico por día)
+========================================== -->
+<section id="block-home" class="flex-grow flex flex-col justify-center items-center text-center space-y-4 animate-fade-in">
+<!-- Día gigantesco -->
+<h1 id="home-day-massive" class="font-barlow text-[100px] md:text-[180px] lg:text-[220px] font-black italic text-white leading-none tracking-tighter uppercase text-glow drop-shadow-2xl">
+<!-- Se llena por JS -->
+</h1>
+
+<!-- Fecha debajo del día -->
+<p id="home-date" class="text-volt font-inter text-xl md:text-2xl font-bold uppercase tracking-[0.2em] mb-10 pb-8">
+<!-- Se llena por JS -->
+</p>
+
+<div class="pt-8 w-full max-w-md">
+<button onclick="handleStartClick()" class="w-full bg-volt text-charcoal-950 hover:bg-white hover:text-black py-5 px-8 font-barlow text-3xl font-black italic tracking-wider uppercase transition-all duration-300 shadow-[0_0_20px_rgba(207,255,94,0.3)]">
+COMENZAR RUTINA <i class="fa-solid fa-arrow-right ml-2"></i>
+</button>
+</div>
+</section>
+
+<!-- ==========================================
+BLOQUE 2: OFF-DAY (Días de Descanso)
+========================================== -->
+<section id="block-offday" class="hidden-block flex-grow flex flex-col justify-center items-center text-center space-y-8 animate-fade-in">
+<h2 class="font-barlow text-5xl md:text-7xl font-black italic text-gray-400 uppercase tracking-tight leading-none">
+HOY NO ES DÍA DE
+<span class="text-white">ENTRENAMIENTO</span>
+</h2>
+<p class="text-gray-400 font-inter text-lg max-w-md">Puedes tomarte el día para recuperar, o agregar una rutina manualmente presionando el botón abajo.</p>
+
+<div class="pt-10">
+<!-- Botón redondo con '+' (Volt) -->
+<button onclick="changeBlock('choose')" class="w-24 h-24 rounded-full bg-volt text-charcoal-950 hover:bg-white text-5xl flex items-center justify-center mx-auto transition-all duration-300 shadow-[0_0_30px_rgba(207,255,94,0.4)] hover:scale-110">
+<i class="fa-solid fa-plus"></i>
+</button>
+</div>
+</section>
+
+<!-- ==========================================
+BLOQUE 3: SELECTOR DE RUTINA MANUAL
+========================================== -->
+<section id="block-choose" class="hidden-block flex-grow flex flex-col justify-center items-center text-center space-y-6 animate-fade-in w-full max-w-2xl mx-auto">
+<h2 class="font-barlow text-4xl md:text-5xl font-black italic text-white uppercase tracking-tight mb-4">SELECCIONA UNA RUTINA</h2>
+
+<button onclick="selectRoutine('Lunes')" class="w-full bg-charcoal-900 border border-charcoal-700 hover:border-volt p-6 flex flex-col items-center justify-center box-glow transition-all">
+<span class="font-barlow text-3xl font-black italic text-volt tracking-widest">LUNES</span>
+<span class="text-gray-300 font-inter font-bold">PECHO + TRÍCEPS</span>
+</button>
+
+<button onclick="selectRoutine('Miércoles')" class="w-full bg-charcoal-900 border border-charcoal-700 hover:border-volt p-6 flex flex-col items-center justify-center box-glow transition-all">
+<span class="font-barlow text-3xl font-black italic text-volt tracking-widest">MIÉRCOLES</span>
+<span class="text-gray-300 font-inter font-bold">ESPALDA + BÍCEPS</span>
+</button>
+
+<button onclick="selectRoutine('Viernes')" class="w-full bg-charcoal-900 border border-charcoal-700 hover:border-volt p-6 flex flex-col items-center justify-center box-glow transition-all">
+<span class="font-barlow text-3xl font-black italic text-volt tracking-widest">VIERNES</span>
+<span class="text-gray-300 font-inter font-bold">PIERNAS + HOMBROS + CORE</span>
+</button>
+
+<button onclick="changeBlock('home')" class="mt-6 text-gray-500 hover:text-white font-inter font-bold uppercase tracking-wide transition">
+Cancelar
+</button>
+</section>
+
+<!-- ==========================================
+BLOQUE 4: INTRO DEL DÍA
+========================================== -->
+<section id="block-intro" class="hidden-block flex-grow flex flex-col justify-center items-center text-center space-y-8 animate-fade-in">
+<div class="inline-block border-2 border-volt text-volt font-inter font-bold px-6 py-2 tracking-[0.3em] uppercase text-sm mb-4">
+VISIÓN GENERAL
 </div>
 
-<div class="slide-container" id="slide2">
-    <div class="content-area section-title-layout">
-        <h2>LUNES</h2>
-        <p class="subtitle">ENFOQUE: PECHO + TRÍCEPS</p>
-    </div>
+<h2 id="intro-day-title" class="font-barlow text-6xl md:text-8xl font-black italic text-white uppercase tracking-tight"></h2>
+
+<p id="intro-focus" class="text-2xl md:text-4xl text-gray-300 font-inter font-black uppercase tracking-wide border-b border-charcoal-700 pb-8"></p>
+
+<div class="flex flex-col sm:flex-row gap-4 w-full max-w-2xl pt-6">
+<button onclick="changeBlock('home')" class="flex-1 bg-charcoal-800 border border-charcoal-700 hover:bg-charcoal-700 text-white py-4 px-6 font-barlow text-2xl font-bold uppercase transition-all">
+<i class="fa-solid fa-chevron-left mr-2"></i> VOLVER
+</button>
+<button onclick="changeBlock('warmup')" class="flex-[2] bg-volt text-charcoal-950 hover:bg-white py-4 px-6 font-barlow text-3xl font-black italic tracking-wider uppercase transition-all shadow-[0_0_15px_rgba(207,255,94,0.2)]">
+INICIAR RUTINA <i class="fa-solid fa-bolt ml-2"></i>
+</button>
+</div>
+</section>
+
+<!-- ==========================================
+BLOQUE 5: WARM-UP (PREPARACIÓN)
+========================================== -->
+<section id="block-warmup" class="hidden-block w-full max-w-4xl mx-auto space-y-10 animate-fade-in">
+<div class="border-l-8 border-volt pl-6 py-2">
+<h2 class="font-barlow text-5xl md:text-6xl font-black italic text-white uppercase tracking-tight">FASE DE PREPARACIÓN Y RECUPERACIÓN</h2>
+<p class="text-volt font-inter font-bold tracking-widest mt-2 uppercase">WARM-UP DEL DÍA</p>
 </div>
 
-<div class="slide-container" id="slide3">
-    <h2 class="slide-title">LUNES: CALENTAMIENTO & ESTIRAMIENTOS</h2>
-    <div class="content-area">
-        <div class="tile-grid">
-            <div class="tile">
-                <h3><i class="fa-solid fa-fire"></i> Warm-Up (5-7 min)</h3>
-                <p>• Rotación hombros x20</p>
-                <p>• Balanceo brazos x20</p>
-                <p>• Flexiones de pared x15</p>
-            </div>
-            <div class="tile">
-                <h3><i class="fa-solid fa-leaf"></i> Cool Down</h3>
-                <p>• Pecho: Mano contra pared.</p>
-                <p>• Tríceps: Codo tras cabeza.</p>
-                <p>• Hombros: Cruce frontal.</p>
-            </div>
-            <div class="tile">
-                <h3><i class="fa-solid fa-stopwatch"></i> Parámetros</h3>
-                <p>• Estiramientos: 20-30 seg.</p>
-                <p>• Descanso: 60-90 segundos.</p>
-                <p>• Objetivo: Relajar zona superior.</p>
-            </div>
-        </div>
-        <div class="image-wrapper" style="height: 250px; margin-top: 40px;">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/11109147947065844721" alt="Stretching cool down">
-        </div>
-    </div>
+<div id="warmup-container" class="grid gap-4">
+<!-- Se llena con JS -->
 </div>
 
-<div class="slide-container" id="slide4">
-    <h2 class="slide-title">LUNES: PECHO</h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <h3 style="color: #ccff00; margin-bottom: 20px;">1. Press con Barra Pilates</h3>
-                <p><strong>4 x 8-12 Reps</strong></p>
-                <ul class="bullet-list">
-                    <li><i class="fa-solid fa-circle-check"></i> Banda tras espalda, acostado.</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Agarre más abierto que hombros.</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Empuja arriba y baja lento.</li>
-                </ul>
-                <h3 style="color: #ccff00; margin-bottom: 20px; margin-top: 30px;">2. Apertura de Pecho</h3>
-                <p><strong>3 x 12-15 Reps</strong></p>
-                <p>Brazos abiertos, codos flexionados. Cerrar como un abrazo.</p>
-            </div>
-            <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/15995694380769084255" alt="Pilates Bar Chest Press">
-            </div>
-        </div>
-    </div>
+<div class="flex flex-col sm:flex-row gap-4 pt-10 border-t border-charcoal-700">
+<button onclick="changeBlock('home')" class="flex-1 bg-charcoal-800 border border-charcoal-700 hover:border-volt hover:text-volt text-white py-4 px-6 font-barlow text-2xl font-bold uppercase transition-all flex items-center justify-center gap-3">
+<i class="fa-solid fa-house"></i> HOME
+</button>
+<button onclick="changeBlock('strength')" class="flex-[2] bg-volt text-charcoal-950 hover:bg-white py-4 px-6 font-barlow text-3xl font-black italic tracking-wider uppercase transition-all text-center shadow-[0_0_15px_rgba(207,255,94,0.2)]">
+IR A BLOQUE DE FUERZA <i class="fa-solid fa-arrow-right ml-2"></i>
+</button>
+</div>
+</section>
+
+<!-- ==========================================
+BLOQUE 6: BLOQUE DE FUERZA PRINCIPAL
+========================================== -->
+<section id="block-strength" class="hidden-block w-full max-w-5xl mx-auto space-y-10 animate-fade-in">
+<div class="border-l-8 border-volt pl-6 py-2 border-b border-charcoal-700 pb-6">
+<h2 class="font-barlow text-5xl md:text-6xl font-black italic text-white uppercase tracking-tight">BLOQUE DE FUERZA PRINCIPAL</h2>
+<p id="strength-focus-subtitle" class="text-volt font-inter font-bold tracking-widest mt-2 uppercase"></p>
 </div>
 
-<div class="slide-container" id="slide5">
-    <h2 class="slide-title">LUNES: TRÍCEPS & MÁS</h2>
-    <div class="content-area">
-        <div class="tile-grid">
-            <div class="tile">
-                <h3>3. Push-up de Rodillas</h3>
-                <p><strong>3 x 8-12</strong></p>
-                <p>Zona azul. Manos apoyadas, rodillas al piso. Baja pecho y empuja.</p>
-            </div>
-            <div class="tile">
-                <h3>4. Extensión Tríceps</h3>
-                <p><strong>3 x 10-15</strong></p>
-                <p>Banda pisada, codos arriba. Extiende brazos sobre cabeza.</p>
-            </div>
-            <div class="tile">
-                <h3>5. Patada de Tríceps</h3>
-                <p><strong>3 x 12 p/brazo</strong></p>
-                <p>Torso inclinado, espalda recta. Codo pegado, extiende atrás.</p>
-            </div>
-        </div>
-    </div>
+<div id="strength-container" class="space-y-6">
+<!-- Se llena con JS -->
 </div>
 
-<div class="slide-container" id="slide6">
-    <div class="content-area section-title-layout">
-        <h2 style="border-color: #00e5ff;">MIÉRCOLES</h2>
-        <p class="subtitle" style="color: #00e5ff;">ENFOQUE: ESPALDA + BÍCEPS</p>
-    </div>
+<div class="pt-10 border-t border-charcoal-700 mt-10">
+<button onclick="completeRoutineAndHome()" class="w-full bg-volt text-charcoal-950 hover:bg-white py-5 px-6 font-barlow text-3xl font-black italic tracking-wider uppercase transition-all shadow-[0_0_20px_rgba(207,255,94,0.3)] flex items-center justify-center gap-3">
+<i class="fa-solid fa-check-double"></i> RUTINA COMPLETADA (VOLVER AL HOME)
+</button>
 </div>
+</section>
 
-<div class="slide-container" id="slide7">
-    <h2 class="slide-title" style="color: #00e5ff;">MIÉRCOLES: CALENTAMIENTO & ESTIRAMIENTOS</h2>
-    <div class="content-area">
-        <div class="tile-grid">
-            <div class="tile" style="border-color: #00e5ff;">
-                <h3 style="color: #00e5ff;">Calentamiento</h3>
-                <p>• Círculos de brazos x20</p>
-                <p>• Retracción escápulas x15</p>
-                <p>• Buenos días (BW) x15</p>
-            </div>
-            <div class="tile" style="border-color: #00e5ff;">
-                <h3 style="color: #00e5ff;">Cool Down</h3>
-                <p>• Espalda (Child’s Pose)</p>
-                <p>• Estiramiento dorsal lateral.</p>
-                <p>• Estiramiento bíceps.</p>
-            </div>
-            <div class="tile" style="border-color: #00e5ff;">
-                <h3 style="color: #00e5ff;">Objetivo</h3>
-                <p>Relajar espalda y bíceps. Mantener 20-30 seg. cada estiramiento.</p>
-            </div>
-        </div>
-    </div>
-</div>
+</main>
 
-<div class="slide-container bleed-image-layout" id="slide8">
-    <div class="bleed-text-side">
-        <h2 class="slide-title" style="color: #00e5ff;">MIÉRCOLES: ESPALDA</h2>
-        <h3>1. Remo Sentado con Barra</h3>
-        <p><strong>4 x 10-12 Reps</strong></p>
-        <p>Banda bajo pies. Sentado, piernas extendidas. Jala hacia abdomen y aprieta.</p>
-        <h3 style="margin-top: 30px;">2. Remo con Manijas</h3>
-        <p><strong>3 x 12 Reps</strong></p>
-        <p>Banda pisada, cadera atrás. Jala hacia cintura.</p>
-    </div>
-    <div class="image-container">
-        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/9507290293533889131" alt="Seated resistance band row">
-    </div>
-</div>
+<!-- ==========================================
+SISTEMA LÓGICO Y DATOS (JS)
+========================================== -->
+<script>
+// BASE DE DATOS DE INSTRUCCIONES
+const workoutData = {
+'Lunes': {
+focus: 'ENFOQUE: PECHO (CHEST) + TRÍCEPS',
+warmup: [
+{ name: 'Rotaciones de hombros', reps: 'x20' },
+{ name: 'Balanceo de brazos', reps: 'x20' },
+{ name: 'Flexiones de pared', reps: 'x15' }
+],
+strength: [
+{ name: '1. Press de Pecho', detail: '4 series x 8-12 reps', sets: 4, inst: 'Equipo: Barra Pilates + banda (detrás de la espalda). Postura: acostado boca arriba, rodillas dobladas, pies firmes. Agarre: manos un poco más abiertas que hombros, palmas al frente. Movimiento: empuja arriba y baja lento.' },
+{ name: '2. Apertura de Pecho', detail: '3 series x 12-15 reps', sets: 3, inst: 'Banda detrás de espalda. Brazos abiertos, codos ligeramente doblados. Cerrar como abrazo.' },
+{ name: '3. Push-up de Rodillas', detail: '3 series x 8-12 reps', sets: 3, inst: 'Tabla, zona azul. Manos apoyadas, rodillas al piso. Baja pecho y empuja.' },
+{ name: '4. Extensión Tríceps', detail: '3 series x 10-15 reps', sets: 3, inst: 'Banda pisada con ambos pies. Codos arriba, extiende brazos sobre la cabeza.' },
+{ name: '5. Patada de Tríceps', detail: '3 series x 12 por brazo', sets: 3, inst: 'Banda pisada. Torso inclinado, espalda recta. Extiende el brazo hacia atrás.' }
+]
+},
+'Miércoles': {
+focus: 'ENFOQUE: ESPALDA (BACK) + BÍCEPS',
+warmup: [
+{ name: 'Círculos de brazos', reps: 'x20' },
+{ name: 'Retracción escapular', reps: 'x15' },
+{ name: 'Buenos días (sin peso)', reps: 'x15' }
+],
+strength: [
+{ name: '1. Remo Sentado', detail: '4 series x 10-12 reps', sets: 4, inst: 'Banda por debajo de los pies. Sentado, piernas extendidas, espalda recta. Jala hacia abdomen y aprieta espalda.' },
+{ name: '2. Remo con Manijas', detail: '3 series x 12 reps', sets: 3, inst: 'Banda pisada. Rodillas suaves, cadera atrás. Jala hacia cintura.' },
+{ name: '3. Pull Apart', detail: '3 series x 15 reps', sets: 3, inst: 'Solo banda con manos. Abre brazos rectos hacia los lados y junta omóplatos.' },
+{ name: '4. Curl Bíceps con Barra', detail: '4 series x 10-15 reps', sets: 4, inst: 'Banda pisada. Palmas hacia arriba. Sube y baja de forma controlada.' },
+{ name: '5. Curl Martillo', detail: '3 series x 12 reps', sets: 3, inst: 'Utiliza las manijas de las bandas manteniendo las palmas enfrentadas.' }
+]
+},
+'Viernes': {
+focus: 'ENFOQUE: PIERNAS + HOMBROS + CORE',
+warmup: [
+{ name: 'Marcha en sitio', reps: '1 min' },
+{ name: 'Sentadillas sin peso', reps: 'x15' },
+{ name: 'Puente de glúteos', reps: 'x15' },
+{ name: 'Círculos de hombros', reps: 'x20' }
+],
+strength: [
+{ name: '1. Sentadilla con Barra', detail: '4 series x 10-15 reps', sets: 4, inst: 'Banda pisada. Barra a nivel de hombros. Baja cadera atrás y sube apretando glúteos.' },
+{ name: '2. Peso Muerto con Barra', detail: '3 series x 10-12 reps', sets: 3, inst: 'Banda pisada. Espalda recta, cadera atrás. Sube realizando fuerza con los glúteos.' },
+{ name: '3. Press de Hombros', detail: '4 series x 10-12 reps', sets: 4, inst: 'Banda pisada. Empuja la barra hacia arriba y baja de manera lenta.' },
+{ name: '4. Elevaciones Laterales', detail: '3 series x 12-15 reps', sets: 3, inst: 'Manijas, palmas hacia abajo. Sube los brazos rectos hasta la altura de los hombros.' },
+{ name: '5. Ab Roller', detail: '3 series x 5-10 reps', sets: 3, inst: 'Rodillas en piso. Mantén el abdomen apretado al estirarte y controla el movimiento.' }
+]
+}
+};
 
-<div class="slide-container" id="slide9">
-    <h2 class="slide-title" style="color: #00e5ff;">MIÉRCOLES: BÍCEPS & MÁS</h2>
-    <div class="content-area">
-        <div class="tile-grid">
-            <div class="tile" style="border-color: #00e5ff;">
-                <h3 style="color: #00e5ff;">3. Pull Apart</h3>
-                <p><strong>3 x 15</strong></p>
-                <p>Solo banda. Abre brazos y junta omóplatos.</p>
-            </div>
-            <div class="tile" style="border-color: #00e5ff;">
-                <h3 style="color: #00e5ff;">4. Curl Bíceps Barra</h3>
-                <p><strong>4 x 10-15</strong></p>
-                <p>Banda pisada, palmas arriba. Sube y baja controlado.</p>
-            </div>
-            <div class="tile" style="border-color: #00e5ff;">
-                <h3 style="color: #00e5ff;">5. Curl Martillo</h3>
-                <p><strong>3 x 12</strong></p>
-                <p>Manijas, palmas enfrentadas. Sube controlando.</p>
-            </div>
-        </div>
-    </div>
-</div>
+const dayNames = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+const workoutDays = ['Lunes', 'Miércoles', 'Viernes'];
 
-<div class="slide-container" id="slide10">
-    <div class="content-area section-title-layout">
-        <h2 style="border-color: #ff0055;">VIERNES</h2>
-        <p class="subtitle" style="color: #ff0055;">PIERNAS + HOMBROS + CORE</p>
-    </div>
-</div>
+let actualDayName = '';
+let activeDay = '';
 
-<div class="slide-container" id="slide11">
-    <h2 class="slide-title" style="color: #ff0055;">VIERNES: CALENTAMIENTO & ESTIRAMIENTOS</h2>
-    <div class="content-area">
-        <div class="tile-grid">
-            <div class="tile" style="border-color: #ff0055;">
-                <h3 style="color: #ff0055;">Calentamiento</h3>
-                <p>• Marcha en sitio (1 min)</p>
-                <p>• Sentadillas libres x15</p>
-                <p>• Puente de glúteo x15</p>
-            </div>
-            <div class="tile" style="border-color: #ff0055;">
-                <h3 style="color: #ff0055;">Cool Down</h3>
-                <p>• Cuádriceps (Talón al glúteo)</p>
-                <p>• Femoral (Inclinación adelante)</p>
-                <p>• Espalda Baja (Rodillas al pecho)</p>
-            </div>
-            <div class="tile" style="border-color: #ff0055;">
-                <h3 style="color: #ff0055;">Objetivo</h3>
-                <p>Movilidad total. Estirar cada posición 20-30 seg. Descanso 60-90 seg.</p>
-            </div>
-        </div>
-    </div>
-</div>
+// INICIALIZACIÓN
+window.onload = () => {
+const dateObj = new Date();
+actualDayName = dayNames[dateObj.getDay()];
+activeDay = actualDayName;
 
-<div class="slide-container" id="slide12">
-    <h2 class="slide-title" style="color: #ff0055;">VIERNES: PIERNAS</h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <h3 style="color: #ff0055; margin-bottom: 20px;">1. Sentadilla con Barra</h3>
-                <p><strong>4 x 10-15 Reps</strong></p>
-                <ul class="bullet-list">
-                    <li><i class="fa-solid fa-angle-right" style="color:#ff0055"></i> Banda pisada, barra a hombros.</li>
-                    <li><i class="fa-solid fa-angle-right" style="color:#ff0055"></i> Baja cadera atrás.</li>
-                    <li><i class="fa-solid fa-angle-right" style="color:#ff0055"></i> Sube apretando glúteos.</li>
-                </ul>
-                <h3 style="color: #ff0055; margin-bottom: 20px; margin-top: 30px;">2. Peso Muerto con Barra</h3>
-                <p><strong>3 x 10-12 Reps</strong></p>
-                <p>Banda pisada, espalda recta. Cadera atrás y sube usando glúteos.</p>
-            </div>
-            <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/1716021760777705027" alt="Resistance band squat pilates bar">
-            </div>
-        </div>
-    </div>
-</div>
+// Render UI
+document.getElementById('home-day-massive').innerText = actualDayName.toUpperCase();
 
-<div class="slide-container" id="slide13">
-    <h2 class="slide-title" style="color: #ff0055;">VIERNES: HOMBROS & CORE</h2>
-    <div class="content-area">
-        <div class="tile-grid" style="margin-bottom: 40px;">
-            <div class="tile" style="border-color: #ff0055;">
-                <h3 style="color: #ff0055;">3. Press Hombros</h3>
-                <p><strong>4 x 10-12</strong></p>
-                <p>Empuja arriba y baja lento.</p>
-            </div>
-            <div class="tile" style="border-color: #ff0055;">
-                <h3 style="color: #ff0055;">4. Elevaciones Lat.</h3>
-                <p><strong>3 x 12-15</strong></p>
-                <p>Manijas, palmas abajo.</p>
-            </div>
-            <div class="tile" style="border-color: #ff0055;">
-                <h3 style="color: #ff0055;">5. Ab Roller</h3>
-                <p><strong>3 x 5-10</strong></p>
-                <p>Controla el movimiento.</p>
-            </div>
-        </div>
-        <div class="image-wrapper" style="height: 250px;">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/5723703014351702807" alt="Ab roller exercise">
-        </div>
-    </div>
-</div>
+const options = { year: 'numeric', month: 'long', day: 'numeric' };
+document.getElementById('home-date').innerText = dateObj.toLocaleDateString('es-ES', options).toUpperCase();
+};
 
-<div class="slide-container" id="slide14">
-    <div class="content-area section-title-layout">
-        <h2 style="font-size: 60px;">DISCIPLINA SOBRE MOTIVACIÓN</h2>
-        <p class="subtitle">¡ENTRENAMIENTO COMPLETADO!</p>
-    </div>
-</div>
+// LÓGICA DE BOTÓN "COMENZAR RUTINA"
+function handleStartClick() {
+if (workoutDays.includes(actualDayName)) {
+activeDay = actualDayName;
+renderData();
+changeBlock('intro');
+} else {
+changeBlock('offday');
+}
+}
 
-</body>
-</html>
+// SELECTOR DE RUTINA MANUAL (+)
+function selectRoutine(day) {
+activeDay = day;
+renderData();
+changeBlock('intro');
+}
 
+// NAVEGACIÓN
+function changeBlock(blockId) {
+['home', 'offday', 'choose', 'intro', 'warmup', 'strength'].forEach(id => {
+document.getElementById(block-${id}).classList.add('hidden-block');
+});
+document.getElementById(block-${blockId}).classList.remove('hidden-block');
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function completeRoutineAndHome() {
+changeBlock('home');
+}
+
+// RENDERIZADO DE DATOS (INSTRUCCIONES Y TIMERS)
+function renderData() {
+const data = workoutData[activeDay];
+
+// Intro
+document.getElementById('intro-day-title').innerText = RUTINA: ${activeDay.toUpperCase()};
+document.getElementById('intro-focus').innerText = data.focus;
+
+// Warm-up
+let warmupHTML = '';
+data.warmup.forEach(item => {
+warmupHTML += <div class="bg-charcoal-900 border border-charcoal-700 p-6 flex justify-between items-center hover:border-volt/50 transition box-glow"> <h3 class="font-inter font-bold text-white text-xl uppercase tracking-wide">${item.name}</h3> <span class="font-barlow text-3xl font-black italic text-volt tracking-widest">${item.reps}</span> </div>;
+});
+document.getElementById('warmup-container').innerHTML = warmupHTML;
+
+// Strength (Con Instrucciones y Timer)
+document.getElementById('strength-focus-subtitle').innerText = data.focus;
+let strengthHTML = '';
+
+data.strength.forEach((item) => {
+// Generar botones de series dinámicamente
