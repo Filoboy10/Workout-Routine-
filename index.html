@@ -66,12 +66,12 @@ BLOQUE 1: HOME PAGE (Dinámico por día)
 <section id="block-home" class="flex-grow flex flex-col justify-center items-center text-center space-y-4 animate-fade-in">
 <!-- Día gigantesco -->
 <h1 id="home-day-massive" class="font-barlow text-[100px] md:text-[180px] lg:text-[220px] font-black italic text-white leading-none tracking-tighter uppercase text-glow drop-shadow-2xl">
-<!-- Se llena por JS -->
+CARGANDO...
 </h1>
 
 <!-- Fecha debajo del día -->
 <p id="home-date" class="text-volt font-inter text-xl md:text-2xl font-bold uppercase tracking-[0.2em] mb-10 pb-8">
-<!-- Se llena por JS -->
+INICIANDO SISTEMA
 </p>
 
 <div class="pt-8 w-full max-w-md">
@@ -91,10 +91,15 @@ HOY NO ES DÍA DE
 </h2>
 <p class="text-gray-400 font-inter text-lg max-w-md">Puedes tomarte el día para recuperar, o agregar una rutina manualmente presionando el botón abajo.</p>
 
-<div class="pt-10">
-<!-- Botón redondo con '+' (Volt) -->
-<button onclick="changeBlock('choose')" class="w-24 h-24 rounded-full bg-volt text-charcoal-950 hover:bg-white text-5xl flex items-center justify-center mx-auto transition-all duration-300 shadow-[0_0_30px_rgba(207,255,94,0.4)] hover:scale-110">
-<i class="fa-solid fa-plus"></i>
+<div class="pt-10 flex flex-col items-center gap-8">
+<!-- Botón redondo con '+' explícito (Volt) perfectamente centrado -->
+<button onclick="changeBlock('choose')" class="w-24 h-24 rounded-full bg-volt text-charcoal-950 hover:bg-white text-6xl font-inter font-black flex items-center justify-center transition-all duration-300 shadow-[0_0_30px_rgba(207,255,94,0.4)] hover:scale-110 leading-none">
+<span class="relative -top-[2px]">+</span>
+</button>
+
+<!-- Botón REGRESAR al Home -->
+<button onclick="changeBlock('home')" class="text-gray-500 hover:text-white font-inter font-bold uppercase tracking-wide transition mt-2">
+Regresar
 </button>
 </div>
 </section>
@@ -120,13 +125,14 @@ BLOQUE 3: SELECTOR DE RUTINA MANUAL
 <span class="text-gray-300 font-inter font-bold">PIERNAS + HOMBROS + CORE</span>
 </button>
 
+<!-- Botón CANCELAR clásico -->
 <button onclick="changeBlock('home')" class="mt-6 text-gray-500 hover:text-white font-inter font-bold uppercase tracking-wide transition">
 Cancelar
 </button>
 </section>
 
 <!-- ==========================================
-BLOQUE 4: INTRO DEL DÍA
+BLOQUE 4: INTRO DEL DÍA (VISIÓN GENERAL)
 ========================================== -->
 <section id="block-intro" class="hidden-block flex-grow flex flex-col justify-center items-center text-center space-y-8 animate-fade-in">
 <div class="inline-block border-2 border-volt text-volt font-inter font-bold px-6 py-2 tracking-[0.3em] uppercase text-sm mb-4">
@@ -137,12 +143,15 @@ VISIÓN GENERAL
 
 <p id="intro-focus" class="text-2xl md:text-4xl text-gray-300 font-inter font-black uppercase tracking-wide border-b border-charcoal-700 pb-8"></p>
 
-<div class="flex flex-col sm:flex-row gap-4 w-full max-w-2xl pt-6">
-<button onclick="changeBlock('home')" class="flex-1 bg-charcoal-800 border border-charcoal-700 hover:bg-charcoal-700 text-white py-4 px-6 font-barlow text-2xl font-bold uppercase transition-all">
-<i class="fa-solid fa-chevron-left mr-2"></i> VOLVER
-</button>
-<button onclick="changeBlock('warmup')" class="flex-[2] bg-volt text-charcoal-950 hover:bg-white py-4 px-6 font-barlow text-3xl font-black italic tracking-wider uppercase transition-all shadow-[0_0_15px_rgba(207,255,94,0.2)]">
+<div class="flex flex-col gap-4 w-full max-w-2xl pt-6 items-center mx-auto">
+<!-- Botón de acción principal centrado y completo -->
+<button onclick="changeBlock('warmup')" class="w-full bg-volt text-charcoal-950 hover:bg-white py-5 px-6 font-barlow text-3xl font-black italic tracking-wider uppercase transition-all shadow-[0_0_15px_rgba(207,255,94,0.2)]">
 INICIAR RUTINA <i class="fa-solid fa-bolt ml-2"></i>
+</button>
+
+<!-- Link de texto para REGRESAR (estilo cancelar) -->
+<button onclick="changeBlock('home')" class="mt-4 text-gray-500 hover:text-white font-inter font-bold uppercase tracking-wide transition">
+Regresar
 </button>
 </div>
 </section>
@@ -160,12 +169,15 @@ BLOQUE 5: WARM-UP (PREPARACIÓN)
 <!-- Se llena con JS -->
 </div>
 
-<div class="flex flex-col sm:flex-row gap-4 pt-10 border-t border-charcoal-700">
-<button onclick="changeBlock('home')" class="flex-1 bg-charcoal-800 border border-charcoal-700 hover:border-volt hover:text-volt text-white py-4 px-6 font-barlow text-2xl font-bold uppercase transition-all flex items-center justify-center gap-3">
-<i class="fa-solid fa-house"></i> HOME
-</button>
-<button onclick="changeBlock('strength')" class="flex-[2] bg-volt text-charcoal-950 hover:bg-white py-4 px-6 font-barlow text-3xl font-black italic tracking-wider uppercase transition-all text-center shadow-[0_0_15px_rgba(207,255,94,0.2)]">
+<div class="flex flex-col gap-4 pt-10 border-t border-charcoal-700 items-center mx-auto w-full">
+<!-- Botón de acción principal centrado y completo -->
+<button onclick="changeBlock('strength')" class="w-full max-w-2xl bg-volt text-charcoal-950 hover:bg-white py-5 px-6 font-barlow text-3xl font-black italic tracking-wider uppercase transition-all text-center shadow-[0_0_15px_rgba(207,255,94,0.2)]">
 IR A BLOQUE DE FUERZA <i class="fa-solid fa-arrow-right ml-2"></i>
+</button>
+
+<!-- Link de texto para REGRESAR (estilo cancelar) -->
+<button onclick="changeBlock('home')" class="mt-4 text-gray-500 hover:text-white font-inter font-bold uppercase tracking-wide transition">
+Regresar al Home
 </button>
 </div>
 </section>
@@ -199,6 +211,7 @@ SISTEMA LÓGICO Y DATOS (JS)
 // BASE DE DATOS DE INSTRUCCIONES
 const workoutData = {
 'Lunes': {
+dayId: 'DÍA 1',
 focus: 'ENFOQUE: PECHO (CHEST) + TRÍCEPS',
 warmup: [
 { name: 'Rotaciones de hombros', reps: 'x20' },
@@ -214,6 +227,7 @@ strength: [
 ]
 },
 'Miércoles': {
+dayId: 'DÍA 2',
 focus: 'ENFOQUE: ESPALDA (BACK) + BÍCEPS',
 warmup: [
 { name: 'Círculos de brazos', reps: 'x20' },
@@ -229,6 +243,7 @@ strength: [
 ]
 },
 'Viernes': {
+dayId: 'DÍA 3',
 focus: 'ENFOQUE: PIERNAS + HOMBROS + CORE',
 warmup: [
 { name: 'Marcha en sitio', reps: '1 min' },
@@ -252,18 +267,31 @@ const workoutDays = ['Lunes', 'Miércoles', 'Viernes'];
 let actualDayName = '';
 let activeDay = '';
 
-// INICIALIZACIÓN
-window.onload = () => {
+// FUNCIONES DE INICIALIZACIÓN ROBUSTA
+function initApp() {
+try {
 const dateObj = new Date();
 actualDayName = dayNames[dateObj.getDay()];
 activeDay = actualDayName;
 
 // Render UI
-document.getElementById('home-day-massive').innerText = actualDayName.toUpperCase();
+const massiveDayEl = document.getElementById('home-day-massive');
+if (massiveDayEl) massiveDayEl.innerText = actualDayName.toUpperCase();
 
+const dateEl = document.getElementById('home-date');
 const options = { year: 'numeric', month: 'long', day: 'numeric' };
-document.getElementById('home-date').innerText = dateObj.toLocaleDateString('es-ES', options).toUpperCase();
-};
+if (dateEl) dateEl.innerText = dateObj.toLocaleDateString('es-ES', options).toUpperCase();
+} catch (error) {
+console.error("Error al iniciar el script de entrenamiento:", error);
+}
+}
+
+// Aseguramos de que se ejecute cuando el documento esté completamente listo
+if (document.readyState === 'loading') {
+document.addEventListener('DOMContentLoaded', initApp);
+} else {
+initApp();
+}
 
 // LÓGICA DE BOTÓN "COMENZAR RUTINA"
 function handleStartClick() {
@@ -285,11 +313,19 @@ changeBlock('intro');
 
 // NAVEGACIÓN
 function changeBlock(blockId) {
-['home', 'offday', 'choose', 'intro', 'warmup', 'strength'].forEach(id => {
-document.getElementById(block-${id}).classList.add('hidden-block');
+const blocks = ['home', 'offday', 'choose', 'intro', 'warmup', 'strength'];
+blocks.forEach(id => {
+const element = document.getElementById(block-${id});
+if (element) {
+element.classList.add('hidden-block');
+}
 });
-document.getElementById(block-${blockId}).classList.remove('hidden-block');
+
+const targetElement = document.getElementById(block-${blockId});
+if (targetElement) {
+targetElement.classList.remove('hidden-block');
 window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 }
 
 function completeRoutineAndHome() {
@@ -299,9 +335,10 @@ changeBlock('home');
 // RENDERIZADO DE DATOS (INSTRUCCIONES Y TIMERS)
 function renderData() {
 const data = workoutData[activeDay];
+if (!data) return; // Salvaguardia
 
-// Intro
-document.getElementById('intro-day-title').innerText = RUTINA: ${activeDay.toUpperCase()};
+// Intro (Aplica automáticamente DÍA 1, DÍA 2 o DÍA 3 según el día)
+document.getElementById('intro-day-title').innerText = ${data.dayId}: ${activeDay.toUpperCase()};
 document.getElementById('intro-focus').innerText = data.focus;
 
 // Warm-up
@@ -317,3 +354,89 @@ let strengthHTML = '';
 
 data.strength.forEach((item) => {
 // Generar botones de series dinámicamente
+let setsHTML = '';
+for(let i=1; i<=item.sets; i++) {
+setsHTML += <button onclick="toggleSet(this)" class="w-10 h-10 border-2 border-charcoal-700 rounded font-barlow text-lg font-bold text-gray-500 hover:border-volt hover:text-volt transition flex items-center justify-center">${i}</button>;
+}
+// Botón Check
+setsHTML += <button onclick="toggleSet(this)" class="w-10 h-10 border-2 border-charcoal-700 rounded font-barlow text-lg font-bold text-gray-500 hover:border-volt hover:text-volt transition flex items-center justify-center mr-4"><i class="fa-solid fa-check"></i></button>;
+
+// Botón Timer 90s
+setsHTML += <button onclick="startTimer(this, 90)" class="h-10 px-4 border-2 border-charcoal-700 rounded font-barlow text-lg font-bold text-gray-500 hover:bg-volt hover:text-black hover:border-volt transition flex items-center justify-center gap-2 shadow-lg"><i class="fa-solid fa-stopwatch"></i> 90s</button>;
+
+strengthHTML += `
+<div class="bg-charcoal-900 border border-charcoal-700 p-6 hover:border-volt/50 transition flex flex-col gap-4 box-glow border-l-4 border-l-charcoal-700 hover:border-l-volt">
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-6">
+
+<!-- Info e Instrucciones -->
+<div class="flex-1">
+<h3 class="font-barlow text-3xl md:text-4xl font-black italic text-white uppercase tracking-wide">‭${item.name}</h3>$‬
+‭$<p class="text-volt font-inter font-bold tracking-widest text-sm mt-1 uppercase">$‬{item.detail}</p>
+<div class="mt-4 p-4 bg-charcoal-950 border border-charcoal-800 rounded">
+<p class="text-gray-300 font-inter text-sm md:text-base leading-relaxed"><i class="fa-solid fa-circle-info text-volt mr-2"></i> ${item.inst}</p>
+</div>
+</div>
+
+<!-- Trackers y Timer -->
+<div class="flex flex-wrap gap-2 shrink-0 xl:justify-end">
+${setsHTML}
+</div>
+
+</div>
+</div>
+`;
+});
+document.getElementById('strength-container').innerHTML = strengthHTML;
+}
+
+// INTERACCIÓN: Toggle de Series
+function toggleSet(btn) {
+if(btn.classList.contains('bg-volt')) {
+btn.classList.remove('bg-volt', 'text-black', 'border-volt');
+btn.classList.add('border-charcoal-700', 'text-gray-500');
+} else {
+btn.classList.add('bg-volt', 'text-black', 'border-volt');
+btn.classList.remove('border-charcoal-700', 'text-gray-500');
+}
+}
+
+// INTERACCIÓN: Lógica del Timer de Descanso
+function startTimer(btn, seconds) {
+if(btn.timerInterval) {
+clearInterval(btn.timerInterval);
+delete btn.timerInterval;
+btn.innerHTML = <i class="fa-solid fa-stopwatch"></i> ${seconds}s;
+btn.classList.remove('bg-white', 'text-black', 'border-white', 'animate-pulse', 'bg-volt', 'border-volt');
+btn.classList.add('text-gray-500', 'border-charcoal-700');
+return;
+}
+
+let timeLeft = seconds;
+btn.innerHTML = <i class="fa-solid fa-hourglass-half"></i> ${timeLeft}s;
+
+btn.classList.add('bg-volt', 'text-black', 'border-volt');
+btn.classList.remove('text-gray-500', 'border-charcoal-700', 'hover:bg-volt', 'hover:text-black');
+
+btn.timerInterval = setInterval(() => {
+timeLeft--;
+if(timeLeft <= 0) {
+clearInterval(btn.timerInterval);
+delete btn.timerInterval;
+
+btn.innerHTML = <i class="fa-solid fa-bell"></i> ¡TIEMPO!;
+btn.classList.add('animate-pulse', 'bg-white', 'border-white');
+btn.classList.remove('bg-volt', 'border-volt');
+
+setTimeout(() => {
+btn.innerHTML = <i class="fa-solid fa-stopwatch"></i> ${seconds}s;
+btn.classList.remove('animate-pulse', 'bg-white', 'text-black', 'border-white');
+btn.classList.add('text-gray-500', 'border-charcoal-700', 'hover:bg-volt', 'hover:text-black');
+}, 4000);
+} else {
+btn.innerHTML = <i class="fa-solid fa-hourglass-half"></i> ${timeLeft}s;
+}
+}, 1000);
+}
+</script>
+</body>
+</html>
